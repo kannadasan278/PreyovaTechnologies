@@ -1,0 +1,14 @@
+# robots.txt — Preyova Technologies
+# TODO: Replace the domain below with the official domain once live.
+
+User-agent: *
+Allow: /
+
+# Site assets and static resources are not meaningful search targets.
+Disallow: /assets/
+
+# Uncomment to block the placeholder files below (create them when ready):
+# Disallow: /privacy-policy.html
+# Disallow: /terms.html
+
+Sitemap: https://www.preyova.in/sitemap.xml
