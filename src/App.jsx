@@ -6,6 +6,8 @@ import ServicesPage from './pages/ServicesPage'
 import SolutionsPage from './pages/SolutionsPage'
 import PortfolioPage from './pages/PortfolioPage'
 import ContactPage from './pages/ContactPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import TermsConditionsPage from './pages/TermsConditionsPage'
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
         <Route path="/solutions" element={<SolutionsPage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-conditions" element={<TermsConditionsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

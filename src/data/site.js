@@ -39,8 +39,8 @@ export const FOOTER_SERVICE_LINKS = [
 
 export const FOOTER_RESOURCE_LINKS = [
   { label: 'FAQ', to: '/#faq' },
-  { label: 'Privacy Policy', placeholder: true, id: 'privacy' },
-  { label: 'Terms & Conditions', placeholder: true, id: 'terms' },
+  { label: 'Privacy Policy', to: '/privacy-policy' },
+  { label: 'Terms & Conditions', to: '/terms-conditions' },
 ]
 
 export const WHATSAPP_URL = `https://wa.me/${SITE_CONFIG.whatsappNumber}`

@@ -97,9 +97,9 @@ export default function Footer() {
               <p className="mb-0">© <span id="footerYear">2026</span> Preyova Technologies. All Rights Reserved.</p>
             </div>
             <div className="col-md-4 text-md-end">
-              <PlaceholderLink href="#privacy" disabled>Privacy Policy</PlaceholderLink>
+              <Link to="/privacy-policy">Privacy Policy</Link>
               <span className="mx-2" style={{ color: 'rgba(255,255,255,.25)' }}>|</span>
-              <PlaceholderLink href="#terms" disabled>Terms &amp; Conditions</PlaceholderLink>
+              <Link to="/terms-conditions">Terms &amp; Conditions</Link>
             </div>
           </div>
         </div>

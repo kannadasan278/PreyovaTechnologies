@@ -1,9 +1,15 @@
 import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 
-const API_CONFIG = {
-  enabled: false,
-  endpoint: '/api/contact',
+const RECIPIENT_EMAIL = 'preyovatech@gmail.com'
+
+const EMAILJS_CONFIG = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '',
 }
+
+const ready = Boolean(EMAILJS_CONFIG.serviceId && EMAILJS_CONFIG.templateId && EMAILJS_CONFIG.publicKey)
 
 function sanitize(value) {
   return String(value == null ? '' : value)
@@ -73,23 +79,27 @@ export default function useContactForm() {
   }
 
   function submitEnquiry(payload) {
-    if (!API_CONFIG.enabled) {
-      return new Promise((resolve) => {
-        window.setTimeout(() => resolve({ ok: true }), 1200)
-      })
+    if (ready) {
+      return emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        {
+          to_email: RECIPIENT_EMAIL,
+          from_name: payload.name,
+          from_email: payload.email,
+          phone: payload.phone,
+          company: payload.company,
+          service: payload.service,
+          budget: payload.budget,
+          message: payload.message,
+          submitted_at: payload.submittedAt,
+        },
+        { publicKey: EMAILJS_CONFIG.publicKey },
+      )
     }
-    return fetch(API_CONFIG.endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    }).then((res) =>
-      res.json().then((data) => {
-        if (!res.ok || !data.ok) {
-          throw new Error((data && data.message) || 'Submission failed')
-        }
-        return data
-      }),
-    )
+    return new Promise((resolve) => {
+      window.setTimeout(() => resolve({ ok: true }), 1200)
+    })
   }
 
   async function onSubmit(event) {
