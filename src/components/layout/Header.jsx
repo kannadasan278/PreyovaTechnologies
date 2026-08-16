@@ -32,7 +32,7 @@ export default function Header() {
         <div className="container">
           <Link className="navbar-brand" to="/" aria-label="Preyova Technologies - Home">
             <span className="brand-mark">
-              <img src="/logo.png" alt="Preyova Technologies" className="logo-img" width="132" height="44" />
+              <img src="/logo-light.png" alt="Preyova Technologies" className="logo-img" width="132" height="44" />
             </span>
           </Link>
 

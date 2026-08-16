@@ -252,16 +252,11 @@ img, svg { max-width: 100%; display: inline-block; vertical-align: middle; }
 .brand-mark {
   display: inline-flex;
   align-items: center;
-  background: rgba(255,255,255,.92);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 6px 12px;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow .3s ease, border-color .3s ease;
+  transition: opacity .3s ease;
 }
 .logo-img { height: 40px; width: auto; display: block; }
 .site-footer .logo-img { height: 36px; }
-.site-header.scrolled .brand-mark { box-shadow: var(--shadow-md); }
+.site-header.scrolled .logo-img { content: url('/logo.png'); }
 
 .navbar-nav { gap: .15rem; }
 /* Specificity deliberately high to override Bootstrap's

@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="col-lg-4 footer-brand">
               <Link className="navbar-brand" to="/" aria-label="Preyova Technologies - Home">
                 <span className="brand-mark">
-                  <img src="/logo.png" alt="Preyova Technologies" className="logo-img" width="132" height="44" />
+                  <img src="/logo-light.png" alt="Preyova Technologies" className="logo-img" width="132" height="44" />
                 </span>
               </Link>
               <p>Technology that drives your business forward. Modern software, web, and mobile solutions built to scale.</p>
