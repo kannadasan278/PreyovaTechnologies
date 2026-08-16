@@ -6,6 +6,7 @@
    ========================================================================== */
 
 :root {
+
   /* ---- Brand colors (configurable) ---- */
   --primary: #0B1B3F;            /* Deep navy */
   --primary-2: #122B5E;          /* Lighter navy */
@@ -1493,7 +1494,6 @@ img, svg { max-width: 100%; display: inline-block; vertical-align: middle; }
 .social-btn.linkedin:hover { background: #0A66C2; box-shadow: 0 10px 26px rgba(10,102,194,.4); }
 .social-btn.instagram:hover { background: var(--g-violet); }
 .social-btn.facebook:hover { background: #1877F2; box-shadow: 0 10px 26px rgba(24,119,242,.4); }
-.social-btn.youtube:hover { background: #FF0000; box-shadow: 0 10px 26px rgba(255,0,0,.35); }
 
 .wa-cta {
   display: flex;
@@ -1710,4 +1710,12 @@ img, svg { max-width: 100%; display: inline-block; vertical-align: middle; }
     transition-duration: .01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Page loader (lazy route fallback) ---------- */
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
 }

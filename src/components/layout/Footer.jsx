@@ -27,16 +27,22 @@ export default function Footer() {
             <div className="col-lg-4 footer-brand">
               <Link className="navbar-brand" to="/" aria-label="Preyova Technologies - Home">
                 <span className="brand-mark">
-                  <img src="/logo-light.png" alt="Preyova Technologies" className="logo-img" width="132" height="44" />
+                  <img src="/logo-light.png" alt="Preyova Technologies" className="logo-img" width="164" height="36" />
                 </span>
               </Link>
               <p>Technology that drives your business forward. Modern software, web, and mobile solutions built to scale.</p>
               <div className="footer-social">
-                {SOCIAL_PLACEHOLDERS.map((s) => (
-                  <PlaceholderLink key={s.icon} href="#" aria-label={s.label}>
-                    <i className={`bi ${s.icon}`}></i>
-                  </PlaceholderLink>
-                ))}
+                {SOCIAL_PLACEHOLDERS.map((s) =>
+                  s.href ? (
+                    <a key={s.icon} href={s.href} target="_blank" rel="noopener" aria-label={s.label}>
+                      <i className={`bi ${s.icon}`}></i>
+                    </a>
+                  ) : (
+                    <PlaceholderLink key={s.icon} href="#" aria-label={s.label}>
+                      <i className={`bi ${s.icon}`}></i>
+                    </PlaceholderLink>
+                  ),
+                )}
                 <a href={waUrl} target="_blank" rel="noopener" aria-label="WhatsApp (placeholder number)">
                   <i className="bi bi-whatsapp"></i>
                 </a>

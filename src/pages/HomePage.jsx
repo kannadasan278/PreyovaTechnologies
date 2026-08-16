@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async'
-import CtaPanel from '../components/layout/CtaPanel'
 import Hero2026 from '../components/home/Hero2026'
 import TrustBar from '../components/home/TrustBar'
 import AboutPreview from '../components/home/AboutPreview'
@@ -9,7 +8,6 @@ import Technologies from '../components/home/Technologies'
 import WhyChooseUs from '../components/home/WhyChooseUs'
 import ProcessSteps from '../components/home/ProcessSteps'
 import PortfolioPreview from '../components/home/PortfolioPreview'
-import Testimonials from '../components/home/Testimonials'
 import FaqAccordion from '../components/home/FaqAccordion'
 
 export default function HomePage() {

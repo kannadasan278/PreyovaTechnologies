@@ -28,9 +28,8 @@ const BUDGET_OPTIONS = [
 
 const SOCIAL_BTNS = [
   { icon: 'bi-linkedin', cls: 'linkedin', label: 'LinkedIn (placeholder)' },
-  { icon: 'bi-instagram', cls: 'instagram', label: 'Instagram (placeholder)' },
+  { icon: 'bi-instagram', cls: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/preyovatechnologies/' },
   { icon: 'bi-facebook', cls: 'facebook', label: 'Facebook (placeholder)' },
-  { icon: 'bi-youtube', cls: 'youtube', label: 'YouTube (placeholder)' },
 ]
 
 export default function ContactPage() {
@@ -91,11 +90,17 @@ export default function ContactPage() {
                 </a>
 
                 <div className="social-row" aria-label="Social media links">
-                  {SOCIAL_BTNS.map((s) => (
-                    <PlaceholderLink key={s.icon} className={`social-btn ${s.cls}`} aria-label={s.label}>
-                      <i className={`bi ${s.icon}`}></i>
-                    </PlaceholderLink>
-                  ))}
+                  {SOCIAL_BTNS.map((s) =>
+                    s.href ? (
+                      <a key={s.icon} className={`social-btn ${s.cls}`} href={s.href} target="_blank" rel="noopener" aria-label={s.label}>
+                        <i className={`bi ${s.icon}`}></i>
+                      </a>
+                    ) : (
+                      <PlaceholderLink key={s.icon} className={`social-btn ${s.cls}`} aria-label={s.label}>
+                        <i className={`bi ${s.icon}`}></i>
+                      </PlaceholderLink>
+                    ),
+                  )}
                   <a className="social-btn whatsapp" href={waUrl} target="_blank" rel="noopener" aria-label="WhatsApp (placeholder number)">
                     <i className="bi bi-whatsapp"></i>
                   </a>

@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   whatsappNumber: '919XXXXXXXXX',
-  email: 'info@preyova.com',
+  email: 'info@preyova.in',
   phone: '+91 XXXXX XXXXX',
   phoneHref: '+919XXXXXXXXX',
   location: 'Chennai, Tamil Nadu, India',
@@ -18,9 +18,8 @@ export const NAV_LINKS = [
 
 export const SOCIAL_PLACEHOLDERS = [
   { icon: 'bi-linkedin', label: 'LinkedIn (placeholder)' },
-  { icon: 'bi-instagram', label: 'Instagram (placeholder)' },
+  { icon: 'bi-instagram', label: 'Instagram', href: 'https://www.instagram.com/preyovatechnologies/' },
   { icon: 'bi-facebook', label: 'Facebook (placeholder)' },
-  { icon: 'bi-youtube', label: 'YouTube (placeholder)' },
 ]
 
 export const FOOTER_COMPANY_LINKS = [
