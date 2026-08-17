@@ -1,9 +1,9 @@
 export const SITE_CONFIG = {
-  whatsappNumber: '919XXXXXXXXX',
+  whatsappNumber: '916383597098',
   email: 'info@preyova.in',
-  phone: '+91 XXXXX XXXXX',
-  phoneHref: '+919XXXXXXXXX',
-  location: 'Chennai, Tamil Nadu, India',
+  phone: '+91 63835 97098',
+  phoneHref: '+916383597098',
+  location: '49/12, Anand Apartment, Mylapore, Chennai, Tamil Nadu 600004, India',
 }
 
 export const NAV_LINKS = [
@@ -17,7 +17,7 @@ export const NAV_LINKS = [
 ]
 
 export const SOCIAL_PLACEHOLDERS = [
-  { icon: 'bi-linkedin', label: 'LinkedIn (placeholder)' },
+  { icon: 'bi-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/preyova-technologies/' },
   { icon: 'bi-instagram', label: 'Instagram', href: 'https://www.instagram.com/preyovatechnologies/' },
   { icon: 'bi-facebook', label: 'Facebook (placeholder)' },
 ]

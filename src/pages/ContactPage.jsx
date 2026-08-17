@@ -66,21 +66,21 @@ export default function ContactPage() {
                 <div className="info-item">
                   <div className="info-icon"><i className="bi bi-envelope" aria-hidden="true"></i></div>
                   <div>
-                    <small>Email <span className="placeholder-tag">Placeholder</span></small>
+                    <small>Email</small>
                     <strong><a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a></strong>
                   </div>
                 </div>
                 <div className="info-item">
                   <div className="info-icon"><i className="bi bi-telephone" aria-hidden="true"></i></div>
                   <div>
-                    <small>Phone <span className="placeholder-tag">Placeholder</span></small>
+                    <small>Phone</small>
                     <strong><a href={`tel:${SITE_CONFIG.phoneHref}`}>{SITE_CONFIG.phone}</a></strong>
                   </div>
                 </div>
                 <div className="info-item">
                   <div className="info-icon"><i className="bi bi-geo-alt" aria-hidden="true"></i></div>
                   <div>
-                    <small>Location <span className="placeholder-tag">Placeholder</span></small>
+                    <small>Location</small>
                     <strong>{SITE_CONFIG.location}</strong>
                   </div>
                 </div>
