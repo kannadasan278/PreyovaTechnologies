@@ -110,7 +110,6 @@ export default function SupportPage() {
             <div className="col-lg-6">
               <CtaPanel
                 className="reveal-right"
-                orb="orb-2"
                 title={<>Have a <span className="text-gradient">Project Query?</span></>}
                 subtitle="Reach out directly and we will get back to you within one business day."
                 buttonLabel="Contact Us"

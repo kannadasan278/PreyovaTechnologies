@@ -109,7 +109,6 @@ export default function BlogDetailPage() {
       </section>
 
       <CtaPanel
-        orb="orb-1"
         title={<>Enjoyed This Article? Let&apos;s <span className="text-gradient">Talk Tech</span></>}
         subtitle="Have a question or want to discuss a project? We are always happy to connect."
         buttonLabel="Get in Touch"

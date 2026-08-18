@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom'
 
-export default function CtaPanel({ badge, title, subtitle, buttonLabel, image, orb = 'orb-1', className = '' }) {
+export default function CtaPanel({ badge, title, subtitle, buttonLabel, image, className = '' }) {
   const cls = `cta-panel reveal${className ? ` ${className}` : ''}`
 
   return (
     <div className={cls}>
       <div className="cta-ring" aria-hidden="true"></div>
-      <div className={orb} aria-hidden="true"></div>
       <div className="cta-glow" aria-hidden="true"></div>
       <div className="position-relative">
         {image ? (

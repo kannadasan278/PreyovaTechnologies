@@ -50,7 +50,6 @@ export default function BlogPage() {
       </section>
 
       <CtaPanel
-        orb="orb-1"
         title={<>Enjoyed This? Let&apos;s <span className="text-gradient">Build Something</span></>}
         subtitle="Whether you need a technical partner or just want to discuss an idea — we are here."
         buttonLabel="Start a Project"

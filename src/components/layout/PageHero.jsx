@@ -4,7 +4,6 @@ export default function PageHero({ label, title, lead, current }) {
   return (
     <section className="page-hero">
       <div className="hero-grid" aria-hidden="true"></div>
-      <div className="orb orb-1" aria-hidden="true"></div>
       <div className="container position-relative">
         <span className="section-label light">{label}</span>
         <h1 className="page-title">{title}</h1>

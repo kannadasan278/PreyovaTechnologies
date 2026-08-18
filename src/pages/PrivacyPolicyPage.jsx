@@ -219,7 +219,6 @@ export default function PrivacyPolicyPage() {
       <section className="section section-tinted">
         <div className="container">
           <CtaPanel
-            orb="orb-2"
             title={<>Questions About Your <span className="text-gradient">Data?</span></>}
             subtitle="Reach out to our team and we'll be happy to clarify how we handle your information."
             buttonLabel="Contact Us"

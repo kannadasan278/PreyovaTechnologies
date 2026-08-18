@@ -222,7 +222,6 @@ export default function TermsConditionsPage() {
       <section className="section section-tinted">
         <div className="container">
           <CtaPanel
-            orb="orb-2"
             title={<>Have Questions About Our <span className="text-gradient">Terms?</span></>}
             subtitle="Our team can walk you through how we work, our process, and what to expect."
             buttonLabel="Talk to Us"

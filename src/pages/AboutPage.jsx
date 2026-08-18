@@ -121,7 +121,6 @@ export default function AboutPage() {
             <div className="col-lg-6">
               <CtaPanel
                 className="reveal-right"
-                orb="orb-2"
                 title={<>Let&apos;s Build Your <span className="text-gradient">Next Product</span></>}
                 subtitle="Tell us what you're trying to achieve and let's map the path together."
                 buttonLabel="Start a Project"

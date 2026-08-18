@@ -127,7 +127,6 @@ export default function DocsPage() {
             <div className="col-lg-6">
               <CtaPanel
                 className="reveal-right"
-                orb="orb-1"
                 title={<>Ready to Start <span className="text-gradient">Building?</span></>}
                 subtitle="Let us turn your idea into a well-architected, production-ready product."
                 buttonLabel="Start a Project"
