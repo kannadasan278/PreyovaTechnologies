@@ -13,12 +13,23 @@ export default function Header() {
   useEffect(() => {
     const collapse = collapseRef.current
     if (!collapse) return undefined
-    const onClick = (e) => {
-      if (e.target.closest('a') && collapse.classList.contains('show')) {
+
+    const closeMobileNav = () => {
+      if (!collapse.classList.contains('show')) return
+      const bsCollapse = window.bootstrap?.Collapse?.getInstance(collapse)
+      if (bsCollapse) {
+        bsCollapse.hide()
+      } else {
+        collapse.classList.remove('show')
         const toggler = document.querySelector('.navbar-toggler')
-        if (toggler) toggler.click()
+        if (toggler) toggler.setAttribute('aria-expanded', 'false')
       }
     }
+
+    const onClick = (e) => {
+      if (e.target.closest('a')) closeMobileNav()
+    }
+
     collapse.addEventListener('click', onClick)
     return () => collapse.removeEventListener('click', onClick)
   }, [])
