@@ -4,7 +4,6 @@ import { WHY_CARDS } from '../../data/home'
 export default function WhyChooseUs() {
   return (
     <section className="section section-dark" id="why">
-      <div className="hero-grid" aria-hidden="true"></div>
       <div className="orb orb-2" aria-hidden="true"></div>
       <div className="container position-relative">
         <div className="section-head center reveal">

@@ -15,9 +15,14 @@ const RING_DEFS = [
   { nx: -0.42, ny: 0.88, nz: 0.2, radius: 1.3, speed: 0.27, dots: 2 },
 ]
 
-export default function TechSphere() {
+export default function TechSphere({ globalMode = false }) {
   const wrapRef = useRef(null)
   const canvasRef = useRef(null)
+  const globalModeRef = useRef(globalMode)
+
+  useEffect(() => {
+    globalModeRef.current = globalMode
+  }, [globalMode])
 
   useEffect(() => {
     const wrap = wrapRef.current
@@ -34,6 +39,7 @@ export default function TechSphere() {
     let raf = 0
     let running = false
     let time = 0
+    let speedMult = 1
     const mouse = { x: 0.5, y: 0.5 }
     const mousePx = { x: -9999, y: -9999, active: false }
 
@@ -155,8 +161,8 @@ export default function TechSphere() {
 
       ctx.clearRect(0, 0, W, H)
 
-      const pulse = 1 + Math.sin(time * 0.9) * 0.06
-      const glowR = RR * (2.4 + Math.sin(time * 0.7) * 0.1)
+      const pulse = 1 + Math.sin(time * 0.9) * 0.06 + (speedMult > 1.5 ? (speedMult - 1) * 0.18 : 0)
+      const glowR = RR * (2.4 + Math.sin(time * 0.7) * 0.1 + (speedMult > 1.5 ? (speedMult - 1) * 0.6 : 0))
       const g = ctx.createRadialGradient(cxr, cyr, RR * 0.2, cxr, cyr, glowR)
       g.addColorStop(0, 'rgba(' + BLUE[0] + ',' + BLUE[1] + ',' + BLUE[2] + ',' + (0.2 * pulse).toFixed(3) + ')')
       g.addColorStop(0.55, 'rgba(' + BLUE[0] + ',' + BLUE[1] + ',' + BLUE[2] + ',' + (0.06 * pulse).toFixed(3) + ')')
@@ -259,7 +265,7 @@ export default function TechSphere() {
         }
         ctx.stroke()
 
-        const travel = ((time * ring.speed) % 1 + 1) % 1
+        const travel = ((time * ring.speed * (0.6 + speedMult * 0.4)) % 1 + 1) % 1
         for (let d = 0; d < ring.dots; d++) {
           const pos = (travel + d / ring.dots) % 1
           const k = Math.floor(pos * RING_SEG) % RING_SEG
@@ -279,13 +285,14 @@ export default function TechSphere() {
       }
 
       packetTimer -= STEP
-      if (packetTimer <= 0 && packets.length < 6 && links.length) {
-        packetTimer = 0.9 + Math.random() * 1.4
+      const maxPackets = speedMult > 1.5 ? 14 : 6
+      if (packetTimer <= 0 && packets.length < maxPackets && links.length) {
+        packetTimer = (0.9 + Math.random() * 1.4) / speedMult
         const li = Math.floor(Math.random() * links.length)
         const a = pts[links[li][0]]
         const b = pts[links[li][1]]
         if (a.zz > -0.2 || b.zz > -0.2) {
-          packets.push({ link: li, t: 0, speed: 0.005 + Math.random() * 0.006 })
+          packets.push({ link: li, t: 0, speed: (0.005 + Math.random() * 0.006) * speedMult })
         }
       }
       for (let i = packets.length - 1; i >= 0; i--) {
@@ -310,8 +317,9 @@ export default function TechSphere() {
       }
 
       sparkTimer -= STEP
-      if (sparkTimer <= 0 && sparks.length < 16) {
-        sparkTimer = 0.3 + Math.random() * 0.4
+      const maxSparks = speedMult > 1.5 ? 28 : 16
+      if (sparkTimer <= 0 && sparks.length < maxSparks) {
+        sparkTimer = (0.3 + Math.random() * 0.4) / speedMult
         const p = pts[Math.floor(Math.random() * POINTS)]
         if (p.zz > -0.3) {
           sparks.push({
@@ -373,7 +381,7 @@ export default function TechSphere() {
 
       const rim = ctx.createRadialGradient(cxr, cyr, RR * 0.9, cxr, cyr, RR * 1.08)
       rim.addColorStop(0, 'rgba(' + BLUE[0] + ',' + BLUE[1] + ',' + BLUE[2] + ',0)')
-      rim.addColorStop(0.5, 'rgba(' + BLUE[0] + ',' + BLUE[1] + ',' + BLUE[2] + ',0.13)')
+      rim.addColorStop(0.5, 'rgba(' + BLUE[0] + ',' + BLUE[1] + ',' + BLUE[2] + ',' + (0.13 + (speedMult > 1.5 ? (speedMult - 1) * 0.12 : 0)).toFixed(3) + ')')
       rim.addColorStop(1, 'rgba(' + BLUE[0] + ',' + BLUE[1] + ',' + BLUE[2] + ',0)')
       ctx.fillStyle = rim
       ctx.fillRect(0, 0, W, H)
@@ -381,7 +389,9 @@ export default function TechSphere() {
 
     function loop() {
       if (!running) return
-      time += STEP
+      const target = globalModeRef.current ? 3.5 : 1
+      speedMult += (target - speedMult) * 0.06
+      time += STEP * speedMult
       render()
       raf = requestAnimationFrame(loop)
     }

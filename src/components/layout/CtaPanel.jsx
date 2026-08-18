@@ -6,7 +6,6 @@ export default function CtaPanel({ badge, title, subtitle, buttonLabel, image, o
   return (
     <div className={cls}>
       <div className="cta-ring" aria-hidden="true"></div>
-      <div className="hero-grid" aria-hidden="true"></div>
       <div className={orb} aria-hidden="true"></div>
       <div className="cta-glow" aria-hidden="true"></div>
       <div className="position-relative">

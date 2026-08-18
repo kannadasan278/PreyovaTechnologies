@@ -6,6 +6,7 @@ export const TECH_CATEGORIES = [
       { monogram: '5', cls: 'm-html', label: 'HTML5' },
       { monogram: '3', cls: 'm-css', label: 'CSS3' },
       { monogram: 'JS', cls: 'm-js', label: 'JavaScript' },
+      { monogram: 'TS', cls: 'm-ts', label: 'TypeScript' },
       { monogram: '⚛', cls: 'm-react', label: 'React' },
       { monogram: 'N', cls: 'm-next', label: 'Next.js' },
       { monogram: 'B', cls: 'm-bs', label: 'Bootstrap' },
@@ -19,6 +20,7 @@ export const TECH_CATEGORIES = [
       { monogram: 'E', cls: 'm-express', label: 'Express.js' },
       { monogram: 'P', cls: 'm-php', label: 'PHP' },
       { monogram: 'L', cls: 'm-laravel', label: 'Laravel' },
+      { monogram: 'Py', cls: 'm-python', label: 'Python' },
     ],
   },
   {
@@ -46,6 +48,8 @@ export const TECH_CATEGORIES = [
       { monogram: 'D', cls: 'm-docker', label: 'Docker' },
       { monogram: 'G', cls: 'm-git', label: 'Git' },
       { monogram: 'CI', cls: 'm-cicd', label: 'CI/CD' },
+      { monogram: 'Lx', cls: 'm-linux', label: 'Linux' },
+      { monogram: 'C', cls: 'm-cloud', label: 'Cloud' },
     ],
   },
 ]

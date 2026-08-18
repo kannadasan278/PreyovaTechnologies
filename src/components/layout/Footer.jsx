@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import PlaceholderLink from './PlaceholderLink'
 import useWhatsApp from '../../hooks/useWhatsApp'
 import {
-  SITE_CONFIG,
   SOCIAL_PLACEHOLDERS,
   FOOTER_COMPANY_LINKS,
   FOOTER_SERVICE_LINKS,
@@ -20,7 +19,6 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="hero-grid" aria-hidden="true"></div>
       <div className="footer-main">
         <div className="container position-relative">
           <div className="row g-4">
@@ -85,12 +83,6 @@ export default function Footer() {
                     )}
                   </li>
                 ))}
-              </ul>
-              <h4 className="footer-title mt-4">Contact</h4>
-              <ul className="footer-links footer-contact">
-                <li><i className="bi bi-envelope" aria-hidden="true"></i> <a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a></li>
-                <li><i className="bi bi-telephone" aria-hidden="true"></i> <a href={`tel:${SITE_CONFIG.phoneHref}`}>{SITE_CONFIG.phone}</a></li>
-                <li><i className="bi bi-geo-alt" aria-hidden="true"></i> <span>{SITE_CONFIG.location}</span></li>
               </ul>
             </div>
           </div>

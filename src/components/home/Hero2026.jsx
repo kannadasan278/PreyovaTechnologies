@@ -1,15 +1,18 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import TechSphere from './TechSphere'
 import { TECH_CATEGORIES } from '../../data/technologies'
 
-const HERO_TECH_LABELS = ['React', 'Next.js', 'Node.js', 'Express.js', 'Laravel', 'MongoDB', 'MySQL', 'PostgreSQL', 'Flutter', 'React Native', 'AWS', 'Docker']
-const HERO_TECH = HERO_TECH_LABELS
-  .map((label) => TECH_CATEGORIES.flatMap((c) => c.chips).find((chip) => chip.label === label))
-  .filter(Boolean)
+const DEFAULT_LABELS = ['React', 'Next.js', 'Node.js', 'Express.js', 'Laravel', 'MongoDB', 'MySQL', 'PostgreSQL', 'Flutter', 'React Native', 'AWS', 'Docker']
+const NETWORK_LABELS = ['JavaScript', 'TypeScript', 'Python', 'PHP', 'Git', 'Linux', 'Cloud', 'HTML5', 'CSS3', 'Bootstrap', 'CI/CD', 'PostgreSQL']
+
+function resolveChips(labels) {
+  const all = TECH_CATEGORIES.flatMap((c) => c.chips)
+  return labels.map((label) => all.find((chip) => chip.label === label)).filter(Boolean)
+}
 
 const SPHERE_ICONS = [
-  { cls: 'bi-cloud', pos: 'i-1' },
+  { cls: 'bi-globe', pos: 'i-1' },
   { cls: 'bi-shield-check', pos: 'i-2' },
   { cls: 'bi-database', pos: 'i-3' },
   { cls: 'bi-cpu', pos: 'i-4' },
@@ -20,6 +23,28 @@ const SPHERE_ICONS = [
 export default function Hero2026() {
   const heroRef = useRef(null)
   const stageRef = useRef(null)
+  const [globalMode, setGlobalMode] = useState(false)
+  const [shuffled, setShuffled] = useState(false)
+  const timerRef = useRef(null)
+
+  const handleGlobalNetwork = useCallback(() => {
+    if (globalMode) return
+    setGlobalMode(true)
+    setShuffled(true)
+    timerRef.current = window.setTimeout(() => {
+      setGlobalMode(false)
+      setShuffled(false)
+      timerRef.current = null
+    }, 2800)
+  }, [globalMode])
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current)
+    }
+  }, [])
+
+  const chips = shuffled ? resolveChips(NETWORK_LABELS) : resolveChips(DEFAULT_LABELS)
 
   useEffect(() => {
     const hero = heroRef.current
@@ -90,33 +115,36 @@ export default function Hero2026() {
   }, [])
 
   return (
-    <section className="hero hero-2026" id="home" aria-label="Introduction" ref={heroRef}>
-      <div className="hero-grid" aria-hidden="true"></div>
+    <section className={`hero hero-2026${globalMode ? ' hero-global-active' : ''}`} id="home" aria-label="Introduction" ref={heroRef}>
       <div className="hero-vignette" aria-hidden="true"></div>
 
       <div className="container position-relative hero-content">
         <div className="row align-items-center g-5">
           <div className="col-lg-6">
             <span className="badge-pill"><span className="dot"></span> Build. Innovate. Scale.</span>
-            <h1 className="hero-title">We Build Software That <span className="text-gradient">Drives Growth</span></h1>
-            <p className="hero-lead">Preyova Technologies helps businesses transform ideas into scalable, secure software — web, mobile, and enterprise solutions engineered for the modern market.</p>
+            <h1 className="hero-title">Building the <span className="text-gradient">Future</span> with Technology</h1>
+            <p className="hero-lead">We craft software that accelerates business — engineered for performance, security, and scale. From idea to deployment, your vision built with precision.</p>
             <div className="hero-actions">
-              <Link to="/contact" className="btn btn-gradient btn-lg">Start a Project <i className="bi bi-arrow-right"></i></Link>
-              <Link to="/services" className="btn btn-outline-light btn-lg">Explore Services</Link>
+              <Link to="/services" className="btn btn-gradient btn-lg">Explore Our Services <i className="bi bi-arrow-right"></i></Link>
+              <Link to="/contact" className="btn btn-outline-light btn-lg">Start a Project</Link>
             </div>
-            <div className="hero-chips">
-              <span className="hero-chip"><i className="bi bi-braces"></i> Modern Stack</span>
-              <span className="hero-chip"><i className="bi bi-shield-check"></i> Secure</span>
-              <span className="hero-chip"><i className="bi bi-graph-up-arrow"></i> Scalable</span>
-              <span className="hero-chip"><i className="bi bi-headset"></i> Supported</span>
-            </div>
+            <button
+              type="button"
+              className={`btn-network${globalMode ? ' btn-network-active' : ''}`}
+              onClick={handleGlobalNetwork}
+              disabled={globalMode}
+              aria-label="Activate Global Technology Network"
+            >
+              <span className="btn-network-dot" aria-hidden="true"></span>
+              <span className="btn-network-label">Global Technology Network</span>
+            </button>
           </div>
 
           <div className="col-lg-6">
             <div className="hero-stage tech-sphere-stage" aria-hidden="true" ref={stageRef}>
-              <TechSphere />
-              {HERO_TECH.map((chip, i) => (
-                <div className={`sphere-chip s-c-${i + 1}`} key={chip.label}>
+              <TechSphere globalMode={globalMode} />
+              {chips.map((chip, i) => (
+                <div className={`sphere-chip s-c-${i + 1} ${shuffled ? 'sphere-chip-shuffled' : ''}`} key={chip.label}>
                   <div className="sphere-chip-in">
                     <div className="sphere-chip-body">
                       <span className={`tech-monogram ${chip.cls}`}>{chip.monogram}</span>

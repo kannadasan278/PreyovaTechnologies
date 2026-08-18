@@ -10,6 +10,10 @@ const PortfolioPage = lazy(() => import('./pages/PortfolioPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'))
 const TermsConditionsPage = lazy(() => import('./pages/TermsConditionsPage'))
+const BlogPage = lazy(() => import('./pages/BlogPage'))
+const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage'))
+const SupportPage = lazy(() => import('./pages/SupportPage'))
+const DocsPage = lazy(() => import('./pages/DocsPage'))
 
 export default function App() {
   return (
@@ -24,6 +28,10 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-conditions" element={<TermsConditionsPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogDetailPage />} />
+          <Route path="/support" element={<SupportPage />} />
+          <Route path="/docs" element={<DocsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
